@@ -47,12 +47,14 @@ function Home() {
     event.preventDefault();
     const dadoObject = {
       nome,
-      descricao
+      descricao,
+      foto,
     };
 
     await dadoService.create(dadoObject);
 
-    setFoto(null); // Limpar a imagem após o envio
+    setFoto(null);
+    setFotoPreview(null);// Limpar a imagem após o envio
 
     // Após a criação, atualize a lista de dados chamando fetchData novamente
     fetchData();

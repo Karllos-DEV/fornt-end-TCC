@@ -39,7 +39,7 @@ function Cards({ dados, handleDelete }) {
     <div className='row'>
       {dados.map((dados) => (
         <div className='col-sm-4' key={dados.id}>
-          <div className='card m-2'>
+          <div className='card mb-3'>
             <img
               src={urlBase + dados.foto}
               className='card-img-top'
@@ -48,18 +48,18 @@ function Cards({ dados, handleDelete }) {
             <div className='card-body'>
               <h5 className='card-title'>{dados.nome}</h5>
               <p className='card-text '>
-                <i className='bi bi-geo-alt'></i> {dados.descricao}
+              <i class="bi bi-chat-dots"></i> {dados.descricao}
               </p>
             </div>
             <div className='card-footer text-muted'>
-              <Link to={`/${dados.id}`} className='btn btn-success'>
-                <i className='bi bi-pencil'></i> Editar
+              <Link to={`/${dados.id}`} className='btn btn-primary'>
+                <i class="bi bi-wrench"></i> Editar
               </Link>
               <button
-                className='btn btn-danger mx-2'
+                className='btn btn-secondary mx-2'
                 onClick={() => openConfirmation(dados.id)}
               >
-                <i className='bi bi-trash3'></i> Excluir
+                <i class="bi bi-trash-fill"></i> Excluir
               </button>
             </div>
           </div>

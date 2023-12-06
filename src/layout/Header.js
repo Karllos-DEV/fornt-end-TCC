@@ -36,6 +36,11 @@ function Header() {
                   Sobre
                 </Link>
               </li>
+              <li className="nav-item">
+                <Link className="nav-link" to="/MPubli">
+                  Minhas Publis
+                </Link>
+              </li>
             </ul>
           </div>
         </div>
