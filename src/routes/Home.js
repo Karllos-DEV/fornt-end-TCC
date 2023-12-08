@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-
+import './Home.css'
 import dadoService from "../services/phonebook";
 
 // import Table from '../layout/Table'
@@ -98,7 +98,7 @@ function Home() {
   };
 
   return (
-    <div className="container">
+    <div className="container telaadd">
       <h2 className="mt-2"></h2>
       {error ? (
         <p className="alert alert-warning" role="alert">
@@ -106,14 +106,14 @@ function Home() {
         </p>
       ) : (
         <>
-          <button onClick={toggleForm} className=" add">
+          <button  onClick={toggleForm} className=" add ">
             {showForm ? "Voltar para a Tabela" :  <i class="bi bi-plus-lg" ></i>}
           </button>
 
           {showForm ? (
             <>
               <hr />
-              <form onSubmit={addDado} className="bg-success-subtle p-2">
+              <form onSubmit={addDado} className="subtle add1 p-2 ">
                 <Input
                   textLabel="nome"
                   text="Nome"
@@ -132,12 +132,12 @@ function Home() {
                 />
                 
 
-                <div className="form-group">
+                <div className="form-group ">
                   <label htmlFor="foto">Foto: </label>
                   <input
                     type="file"
                     id="foto"
-                    className="form-control-file m-2"
+                    className="form-control-file  m-2"
                     onChange={handleFileChange}
                   />
                   {fotoPreview && (
@@ -148,7 +148,7 @@ function Home() {
                     />
                   )}
                 </div>
-                <button className="btn btn-success mt-4">Cadastrar</button>
+                <button className=" BC mt-4">Cadastrar</button>
               </form>
               <br />
             </>

@@ -5,9 +5,10 @@ import ptBR from 'date-fns/locale/pt-BR'
 import './Cards.css'
 import { useState } from 'react'
 
-function Cards({ dados, handleDelete }) {
+function Cards({ dados, handleDelete}) {
   const [showConfirmation, setShowConfirmation] = useState(false)
   const [taskIdToDelete, setTaskIdToDelete] = useState(null)
+
 
   const openConfirmation = (id) => {
     setTaskIdToDelete(id)
@@ -36,7 +37,7 @@ function Cards({ dados, handleDelete }) {
     )
   }
   return (
-    <div className='row'>
+    <div className='row' >
       {dados.map((dados) => (
         <div className='col-sm-4' key={dados.id}>
           <div className='card mb-3'>

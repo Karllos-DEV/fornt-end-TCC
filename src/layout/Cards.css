@@ -108,9 +108,10 @@
 }
 
 .add{
-  width: 300px;
-  height: 350px;
+  width: 100px;
+  height: 100px;
 }
+
 .add i{
-  font-size: 100px;
+  font-size: 50px;
 }
