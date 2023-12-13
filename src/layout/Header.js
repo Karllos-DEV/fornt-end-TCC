@@ -1,13 +1,14 @@
 import { Link } from "react-router-dom";
+import Logo from "../img/LogoHouse.png";
 
 function Header() {
   return (
     <div>
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
         <div className="container-fluid">
-          <Link className="navbar-brand" to="/">
-            WIKI 
-          </Link>
+            <a class="navbar-brand" href="#">
+              <img src={Logo} width="110" height="50"></img>
+            </a>
           <button
             className="navbar-toggler"
             type="button"
@@ -19,7 +20,7 @@ function Header() {
           >
             <span className="navbar-toggler-icon"></span>
           </button>
-          <div className="collapse navbar-collapse" id="navbarSupportedContent">
+          <div className=" me-2 navT" id="navbarSupportedContent">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               <li className="nav-item">
                 <Link className="nav-link" aria-current="page" to="/">
