@@ -1,43 +1,9 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
-import "./index.css";
+import { createRoot } from "react-dom/client";
 import App from "./App";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min";
 import "bootstrap-icons/font/bootstrap-icons.min.css";
 
-//1- configurando router
+const root = createRoot(document.querySelector("#root"));
 
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Sobre from "./routes/Sobre";
-import Contato from "./routes/Contato";
-import Home from "./routes/Home";
-import Editar from "./routes/Editar";
-
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <App />,
-    children: [
-      {
-        path: "/",
-        element: <Home />,
-      },
-      {
-        path: "/:id",
-        element: <Editar />,
-      },
-      {
-        path: "/sobre",
-        element: <Sobre />,
-      },
-      {
-        path: "/contato",
-        element: <Contato />,
-      },
-    ],
-  },
-]);
-
-const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(<RouterProvider router={router} />);
+root.render(<App />);

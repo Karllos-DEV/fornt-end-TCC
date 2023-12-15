@@ -1,18 +1,10 @@
-import { Outlet } from "react-router-dom";
-import Footer from "./layout/Footer";
-import Header from "./layout/Header";
+import RoutesApp from "./routes";
+import { AuthProvider } from "./contexts/auth";
 
-function App() {
-  return (
-    <div style={{ height: "100vh" }}>
-      <Header />
-      <main className="h-75 overflow-y-auto">
-        <Outlet />
-      </main>
-
-      <Footer />
-    </div>
-  );
-}
+const App = () => (
+  <AuthProvider>
+    <RoutesApp />
+  </AuthProvider>
+);
 
 export default App;

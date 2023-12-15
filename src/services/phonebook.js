@@ -3,6 +3,7 @@ import axios from "axios";
 const urlBase = "http://localhost:3001/api/dados";
 
 const getAll = () => axios.get(urlBase);
+// const getMyPosts = () => 
 
 const getOne = (id) => axios.get(`${urlBase}/${id}`);
 

@@ -2,9 +2,12 @@ import { useEffect, useState } from "react";
 import './Home.css'
 import dadoService from "../services/phonebook";
 
+
 // import Table from '../layout/Table'
 import Input from "../layout/Input";
 import Cards from "../layout/Cards";
+import Header from "../layout/Header";
+import Footer from "../layout/Footer";
 
 function Home() {
   const [dados, setDados] = useState([]);
@@ -98,68 +101,73 @@ function Home() {
   };
 
   return (
-    <div className="container telaadd">
-      <h2 className="mt-2"></h2>
-      {error ? (
-        <p className="alert alert-warning" role="alert">
-          {error}
-        </p>
-      ) : (
-        <>
-          <button  onClick={toggleForm} className=" add ">
-            {showForm ? "Voltar para a Tabela" :  <i class="bi bi-plus-lg" ></i>}
-          </button>
+    <div>
+      <Header />
+      <div className="container telaadd">
 
-          {showForm ? (
-            <>
-              <hr />
-              <form onSubmit={addDado} className="subtle add1 p-2 ">
-                <Input
-                  textLabel="nome"
-                  text="Nome"
-                  inputType="text"
-                  textPlaceholder="Digite o seu nome..."
-                  handleChange={handleNomeChange}
-                  isPhone={false}
-                />
-                <Input
-                  textLabel="descricao"
-                  text="Descrição"
-                  inputType="text"
-                  textPlaceholder="Digite sua Descrição"
-                  handleChange={handleDescricaochange}
-                  isPhone={false}
-                />
+        <h2 className="mt-2"></h2>
+        {error ? (
+          <p className="alert alert-warning" role="alert">
+            {error}
+          </p>
+        ) : (
+          <>
+            <button onClick={toggleForm} className=" add ">
+              {showForm ? "Voltar para a Tabela" : <i class="bi bi-plus-lg" ></i>}
+            </button>
+
+            {showForm ? (
+              <>
                 
-
-                <div className="form-group ">
-                  <label htmlFor="foto">Foto: </label>
-                  <input
-                    type="file"
-                    id="foto"
-                    className="form-control-file  m-2"
-                    onChange={handleFileChange}
+                <form onSubmit={addDado} className="subtle add1 p-2 ">
+                  <Input
+                    textLabel="nome"
+                    text="Nome"
+                    inputType="text"
+                    textPlaceholder="Digite o seu nome..."
+                    handleChange={handleNomeChange}
+                    isPhone={false}
                   />
-                  {fotoPreview && (
-                    <img
-                      src={fotoPreview}
-                      alt="Preview"
-                      style={{ maxWidth: "200px" }}
+                  <Input
+                    textLabel="descricao"
+                    text="Descrição"
+                    inputType="text"
+                    textPlaceholder="Digite sua Descrição"
+                    handleChange={handleDescricaochange}
+                    isPhone={false}
+                  />
+
+
+                  <div className="form-group ">
+                    <label htmlFor="foto">Foto: </label>
+                    <input
+                      type="file"
+                      id="foto"
+                      className="form-control-file  m-2"
+                      onChange={handleFileChange}
                     />
-                  )}
-                </div>
-                <button className=" BC mt-4">Cadastrar</button>
-              </form>
-              <br />
-            </>
-          ) : (
-            <div className="my-3">
-              <hr />
-              <Cards dados={dados} handleDelete={handleDelete} />
-            </div>
-          )}
-        </>
-      )}
+                    {fotoPreview && (
+                      <img
+                        src={fotoPreview}
+                        alt="Preview"
+                        style={{ maxWidth: "200px" }}
+                      />
+                    )}
+                  </div>
+                  <button className=" BC mt-4">Cadastrar</button>
+                </form>
+                <br />
+              </>
+            ) : (
+              <div className="my-3">
+                
+                <Cards dados={dados} handleDelete={handleDelete} />
+              </div>
+            )}
+          </>
+        )}
+      </div>
+      <Footer/>
     </div>
   );
 }

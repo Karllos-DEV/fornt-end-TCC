@@ -1,12 +1,24 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Logo from "../img/LogoHouse.png";
+import useAuth from "../hooks/useAuth";
 
 function Header() {
+
+  const navigate = useNavigate();
+
+  const { signout, signed } = useAuth();
+
+  const handleSignOut = () => {
+    signout();
+
+    navigate("/");
+  };
+
   return (
     <div>
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
         <div className="container-fluid">
-            <a class="navbar-brand" href="#">
+            <a className="navbar-brand" href="#">
               <img src={Logo} width="110" height="50"></img>
             </a>
           <button
@@ -41,6 +53,21 @@ function Header() {
                 <Link className="nav-link" to="/MPubli">
                   Minhas Publis
                 </Link>
+                {signed ? (
+              <button
+                className="btn btn-danger ms-auto mb-2"
+                onClick={handleSignOut}
+              >
+                <i className="bi bi-person"></i>
+                &nbsp;Sair
+              </button>
+            ) : (
+              <Link className="btn btn-primary ms-auto mb-2" to="/login">
+                <i className="bi bi-person"></i>
+                &nbsp;Login
+              </Link>
+            )}
+
               </li>
             </ul>
           </div>

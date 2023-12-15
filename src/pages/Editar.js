@@ -3,6 +3,8 @@ import { useNavigate, useParams } from 'react-router-dom'
 
 import dadoService from '../services/phonebook'
 import Input from '../layout/Input'
+import Header from '../layout/Header'
+import Footer from '../layout/Footer'
 
 function Editar() {
   const { id } = useParams()
@@ -73,6 +75,8 @@ function Editar() {
   }
 
   return (
+    <div>
+      <Header />
     <div className='container'>
       <h2>Edição de Dados</h2>
       <hr />
@@ -120,6 +124,8 @@ function Editar() {
         </button>
       </form>
     </div>
+    <Footer />
+    </div >
   )
 }
 
