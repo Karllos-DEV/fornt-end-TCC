@@ -50,7 +50,7 @@ function Header() {
                 </Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to="/MPubli">
+                <Link className="nav-link" to="/mpubli">
                   Minhas Publis
                 </Link>
                 {signed ? (

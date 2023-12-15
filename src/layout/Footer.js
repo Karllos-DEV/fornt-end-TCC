@@ -10,6 +10,12 @@ function Footer() {
         <a href="https://www.webwhatsapp.com" target='_blank' rel="noreferrer">
           <i className="bi bi-whatsapp p-2 fs-3 text-white"></i>
         </a>
+        <a href="https://www.webwhatsapp.com" target='_blank' rel="noreferrer">
+          <i className="bi bi-whatsapp p-2 fs-3 text-white"></i>
+        </a>
+        <a href="https://www.webwhatsapp.com" target='_blank' rel="noreferrer">
+          <i className="bi bi-whatsapp p-2 fs-3 text-white"></i>
+        </a>
         <h4 className="text-white">
           Desenvolvido por &copy;Karllos e equipe - 2023
         </h4>
