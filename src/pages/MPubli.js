@@ -10,7 +10,7 @@ import Header from "../layout/Header";
 import Footer from "../layout/Footer";
 
 function Home() {
-  const [dados, setDados] = useState([]);
+  const [posts, setPosts] = useState([]);
   const [nome, setNome] = useState("");
   const [descricao, setDescricao] = useState("");
   const [foto, setFoto] = useState(null);
@@ -26,7 +26,7 @@ function Home() {
     dadoService
       .getAll()
       .then((response) => {
-        setDados(response.data);
+        setPosts(response.data);
         setShowForm(false);
       })
       .catch((error) => {
@@ -113,7 +113,7 @@ function Home() {
         ) : (
           <>
             <button onClick={toggleForm} className=" add ">
-              {showForm ? "Voltar para a Tabela" : <i class="bi bi-plus-lg" ></i>}
+              {showForm ? "Voltar" : <i class="bi bi-plus-lg" ></i>}
             </button>
 
             {showForm ? (
@@ -161,7 +161,7 @@ function Home() {
             ) : (
               <div className="my-3">
                 
-                <Cards dados={dados} handleDelete={handleDelete} />
+                <Cards posts={posts} handleDelete={handleDelete} />
               </div>
             )}
           </>

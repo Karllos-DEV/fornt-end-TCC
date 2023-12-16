@@ -21,10 +21,11 @@ const RoutesApp = () => {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
-          <Route exact path="/:id" element={<Private Item={Home} />} />
+          <Route exact path="/:id" element={<Private Item={Editar} />} />
           <Route exact path="/mpubli" element={<Private Item={MPubli} />} />
-          <Route exact path="/editar" element={<Private Item={Editar} />} />
           <Route path="/registro" element={<Registro />} />
+          <Route path="/cancel" element={<MPubli />} />
+          <Route path="/confirm" element={<MPubli />} />
           <Route path="*" element={<Home />} />
         </Routes>
       </Fragment>

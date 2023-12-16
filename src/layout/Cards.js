@@ -5,7 +5,7 @@ import ptBR from 'date-fns/locale/pt-BR'
 import './Cards.css'
 import { useState } from 'react'
 
-function Cards({ dados, handleDelete}) {
+function Cards({ posts, handleDelete}) {
   const [showConfirmation, setShowConfirmation] = useState(false)
   const [taskIdToDelete, setTaskIdToDelete] = useState(null)
 
@@ -29,7 +29,7 @@ function Cards({ dados, handleDelete}) {
     }
   }
 
-  if (dados.length === 0) {
+  if (posts.length === 0) {
     return (
       <div>
         <p>Não existem dados a serem exibidos!</p>
@@ -38,27 +38,27 @@ function Cards({ dados, handleDelete}) {
   }
   return (
     <div className='row' >
-      {dados.map((dados) => (
-        <div className='col-sm-4' key={dados.id}>
+      {posts.map((post) => (
+        <div className='col-sm-4' key={post.id}>
           <div className='card mb-3'>
             <img
-              src={urlBase + dados.foto}
+              src={urlBase + post.foto}
               className='card-img-top'
               alt='foto'
             />
             <div className='card-body'>
-              <h5 className='card-title'>{dados.nome}</h5>
+              <h5 className='card-title'>{post.nome}</h5>
               <p className='card-text '>
-              <i class="bi bi-chat-dots"></i> {dados.descricao}
+              <i class="bi bi-chat-dots"></i> {post.descricao}
               </p>
             </div>
             <div className='card-footer text-muted'>
-              <Link to={`/${dados.id}`} className='btn btn-primary'>
+              <Link to={`/${post.id}`} className='btn btn-primary'>
                 <i class="bi bi-wrench"></i> Editar
               </Link>
               <button
                 className='btn btn-secondary mx-2'
-                onClick={() => openConfirmation(dados.id)}
+                onClick={() => openConfirmation(post.id)}
               >
                 <i class="bi bi-trash-fill"></i> Excluir
               </button>

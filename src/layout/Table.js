@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-function Table({ dados, handleDelete }) {
+function Table({ posts, handleDelete }) {
   return (
     <table className="table table-striped">
       <thead>
@@ -12,18 +12,18 @@ function Table({ dados, handleDelete }) {
         </tr>
       </thead>
       <tbody>
-        {dados.map((dado, index) => (
-          <tr key={dado.id}>
+        {posts.map((post, index) => (
+          <tr key={post.id}>
             <td>{index + 1}</td>
-            <td>{dado.nome}</td>
-            <td>{dado.descricao}</td>
+            <td>{post.nome}</td>
+            <td>{post.descricao}</td>
             <td>
-              <Link to={`/${dado.id}`} className="btn btn-success">
+              <Link to={`/${post.id}`} className="btn btn-success">
                 <i className="bi bi-pencil"></i> Editar
               </Link>
               <button
                 className="btn btn-danger mx-2"
-                onClick={() => handleDelete(dado.id)}
+                onClick={() => handleDelete(post.id)}
               >
                 <i className="bi bi-trash3"></i> Excluir
               </button>

@@ -5,6 +5,7 @@ import dadoService from '../services/phonebook'
 import Input from '../layout/Input'
 import Header from '../layout/Header'
 import Footer from '../layout/Footer'
+import './Editar.css'
 
 function Editar() {
   const { id } = useParams()
@@ -67,25 +68,25 @@ function Editar() {
 
     await dadoService.update(id, dadoObject)
 
-    navigate('/')
+    navigate('/MPubli')
   }
 
   const cancel = () => {
-    navigate('/')
+    navigate('/MPubli')
   }
 
   return (
     <div>
       <Header />
     <div className='container'>
-      <h2>Edição de Dados</h2>
+      <h2>Editar Publicações</h2>
       <hr />
-      <form onSubmit={editObject} className='bg-success-subtle p-2'>
+      <form onSubmit={editObject} className='editbg'>
         <Input
           textLabel='nome'
           text='Nome'
           inputType='text'
-          textPlaceholder='Digite o seu nome...'
+          textPlaceholder='Novo Nome'
           handleChange={handleNomeChange}
           isPhone={false}
           defaultValue={nome}
@@ -94,7 +95,7 @@ function Editar() {
           textLabel='descricao'
           text='Descrição'
           inputType='text'
-          textPlaceholder='Digite sua Descrição'
+          textPlaceholder='Novo Descrição'
           handleChange={handleDescricaochange}
           isPhone={false}
           defaultValue={descricao}
@@ -109,16 +110,16 @@ function Editar() {
             onChange={handleFileChange}
           />
           {fotoPreview ? (
-            <img
+            <img 
               src={fotoPreview}
               alt='Preview'
               style={{ maxWidth: '200px' }}
             />
           ) : fotoAntiga ? (
-            <img src={fotoAntiga} alt='Preview' style={{ maxWidth: '200px' }} />
+            <img className='previmg' src={fotoAntiga} alt='Preview' style={{ maxWidth: '200px' }} />
           ) : null}
         </div>
-        <button className='btn btn-success m-2'>Editar</button>
+        <button className='btn btn-primary m-2'>Editar</button>
         <button className='btn btn-danger m-2' onClick={() => cancel()}>
           Cancelar
         </button>

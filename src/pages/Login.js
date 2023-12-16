@@ -24,7 +24,7 @@ function Login() {
       setUsername("");
       setPassword("");
       setError(null); // Limpar erros se o login for bem-sucedido
-      navigate("/Home");
+      navigate("/mpubli");
     } catch (exception) {
       setError("Credenciais incorretas. Tente novamente."); // Define a mensagem de erro
       setTimeout(() => {
