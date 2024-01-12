@@ -8,7 +8,7 @@ const getAll = () => axios.get(urlBase);
 const getOne = (id) => axios.get(`${urlBase}/${id}`);
 
 const create = (dadoObject) =>
-  axios.post(urlBase, dadoObject, {
+  axios.post(`${urlBase}/post`, dadoObject, {
     headers: {
       "Content-Type": "multipart/form-data",
     },

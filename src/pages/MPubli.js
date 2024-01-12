@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import './Home.css'
 import dadoService from "../services/phonebook";
+import useAuth from "../hooks/useAuth";
 
 
 // import Table from '../layout/Table'
@@ -17,6 +18,9 @@ function Home() {
   const [fotoPreview, setFotoPreview] = useState(null); // Adicionando estado para a prévia da imagem
   const [showForm, setShowForm] = useState(false);
   const [error, setError] = useState(null);
+
+
+  const {user} = useAuth();
 
   useEffect(() => {
     fetchData(); // Carrega os dados iniciais
@@ -48,12 +52,14 @@ function Home() {
 
   const addDado = async (event) => {
     event.preventDefault();
+    
     const dadoObject = {
       nome,
       descricao,
       foto,
+      user_id: user.id
     };
-
+    
     await dadoService.create(dadoObject);
 
     setFoto(null);
