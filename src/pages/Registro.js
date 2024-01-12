@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import Header from "../layout/Header";
-
+import './Registro.css';
 import Footer from "../layout/Footer";
 
 function Registro() {
@@ -36,13 +36,13 @@ function Registro() {
   };
 
   return (
-    <div className='d-flex flex-column min-vh-100'>
+    <div className='d-flex flex-column min-vh-100 main'>
       <Header />
       <div className="container mt-3 animate__animated animate__fadeIn">
-        <h2 className="text-center">Registro</h2>
+        <h2 className="text-center m-5 p-5 " id="Treg">Registro</h2>
         {error && <div className="alert alert-danger">{error}</div>}
-        <form className="bg-light p-4 mx-auto my-3">
-          <div className="mb-3">
+        <form className="bg-light p-4 mx-auto m-3 log1">
+          <div className="mb-3 ">
             <label htmlFor="nome" className="form-label">
               Nome:
             </label>

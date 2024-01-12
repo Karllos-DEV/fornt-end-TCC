@@ -101,7 +101,7 @@ function Home() {
   };
 
   return (
-    <div>
+    <div className="main">
       <Header />
       <div className="container telaadd">
 
@@ -113,7 +113,7 @@ function Home() {
         ) : (
           <>
             <button onClick={toggleForm} className=" add ">
-              {showForm ? "Voltar" : <i class="bi bi-plus-lg" ></i>}
+              {showForm ? "Voltar" : "Novo"}
             </button>
 
             {showForm ? (

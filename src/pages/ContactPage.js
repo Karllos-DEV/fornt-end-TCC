@@ -2,12 +2,11 @@
 import React from 'react';
 import './ContactPage.css'; // Estilo opcional
 import Header from '../layout/Header';
-import Footer from '../layout/Footer';
 
 function ContactPage() {
   return (
-
-    <div className="contact-page-container main">
+      <div className='main p-5'>
+    <div className="contact-page-container m-5 p-5">
       <div className="about-us-container box1">
         <Header />
         <h2>Sobre Nós</h2>
@@ -35,8 +34,8 @@ function ContactPage() {
           <strong>E-mail:</strong> contato@maxservices.com
         </p>
       </div>
-      {/* <Footer/> */}
     </div>
+      </div>
     
   );
 }

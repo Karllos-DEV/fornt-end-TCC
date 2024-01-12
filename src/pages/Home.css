@@ -13,8 +13,11 @@
 }
 
 .add {
-    margin-top: 5em;
     margin: 20px;
+    color: #000000;
+    font-size: 20px;
+    font-family: 'Times New Roman', Times, serif;
+
 }
 
 .main {
