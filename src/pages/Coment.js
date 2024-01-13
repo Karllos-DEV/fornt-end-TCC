@@ -6,15 +6,18 @@ import Header from '../layout/Header';
 import Footer from '../layout/Footer';
 
 function Coment() {
+
   const { postId } = useParams();
   const [post, setPost] = useState(null);
   const [comments, setComments] = useState([]);
   const [newComment, setNewComment] = useState('');
   const [error, setError] = useState(null);
+  const urlBase = 'http://localhost:3001/images/';
 
   useEffect(() => {
-    fetchPostAndComments(); // Carrega o post e os comentários iniciais
-  }, [postId]);
+    fetchData()
+    // fetchPostAndComments(); // Carrega o post e os comentários iniciais
+  }, []);
 
   const fetchPostAndComments = () => {
     dadoService
@@ -39,6 +42,30 @@ function Coment() {
       });
   };
 
+  const fetchData = () => {
+    dadoService
+      .getOne(postId)
+      .then((response) => {
+        setPost(response.data);
+
+      })
+      .catch((error) => {
+        if (error.response) {
+          // O servidor respondeu com um status de erro
+          console.error("Erro na requisição:", error.response);
+        } else if (error.request) {
+          // A requisição foi feita, mas não houve resposta do servidor
+          console.error("Não foi possível se conectar ao servidor.");
+          setError(
+            "Não foi possível se conectar ao servidor. Verifique sua conexão de rede."
+          );
+        } else {
+          // Algo aconteceu na configuração da requisição que causou o erro
+          console.error("Erro na configuração da requisição:", error.message);
+        }
+      });
+  };
+
   const handleCommentChange = (event) => {
     setNewComment(event.target.value);
   };
@@ -54,7 +81,7 @@ function Coment() {
     dadoService.createComment(postId, { comentario: newComment })
       .then(() => {
         // Após criar o comentário, recarregue os comentários
-        fetchPostAndComments();
+        // fetchPostAndComments();
         // Limpar o campo de novo comentário após o envio
         setNewComment('');
         setError(null); // Limpar qualquer erro anterior
@@ -72,8 +99,13 @@ function Coment() {
       <div className='p-5'>
         {/* Exibe o post aqui */}
         <div>
-        <h2 className="post-title ">{post?.nome}</h2>
-        <p className="post-description">{post?.descricao}</p>
+          <h2 className="post-title ">{post?.nome}</h2>
+          <p className="post-description">{post?.descricao}</p>
+          <img
+            src={urlBase + post?.foto}
+            className='card-img-top'
+            alt='foto'
+          />
         </div>
 
         {/* Exibe os comentários existentes */}

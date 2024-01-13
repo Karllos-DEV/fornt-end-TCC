@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import './Home.css';
 import Header from "../layout/Header";
 import Footer from "../layout/Footer";
@@ -65,12 +65,12 @@ function Home() {
                       <p className='card-text '>
                         <i className="bi bi-chat-dots"></i> {post.descricao}
                       </p>
-                      <button
-                        className="btnAD"
-                        onClick={() => handlePostClick(post.id)}
+                      <Link
+                        className="btnAD" to={"/coment/"+post.id}
+                       
                       >
-                        Ver Comentários
-                      </button>
+                        
+                      </Link>
                     </div>
                   </div>
                 </div>

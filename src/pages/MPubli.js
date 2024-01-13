@@ -28,7 +28,7 @@ function Home() {
 
   const fetchData = () => {
     dadoService
-      .getAll()
+      .getMyPosts(user.id)
       .then((response) => {
         setPosts(response.data);
         setShowForm(false);
