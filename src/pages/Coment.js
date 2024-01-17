@@ -4,6 +4,7 @@ import dadoService from '../services/phonebook';
 import './Coment.css'; // Importe um arquivo CSS separado para os estilos
 import Header from '../layout/Header';
 import Footer from '../layout/Footer';
+import useAuth from "../hooks/useAuth";
 
 function Coment() {
 
@@ -13,17 +14,18 @@ function Coment() {
   const [newComment, setNewComment] = useState('');
   const [error, setError] = useState(null);
   const urlBase = 'http://localhost:3001/images/';
+  const {user} = useAuth();
 
   useEffect(() => {
     fetchData()
-    // fetchPostAndComments(); // Carrega o post e os comentários iniciais
+    fetchPostAndComments(); // Carrega o post e os comentários iniciais
   }, []);
 
   const fetchPostAndComments = () => {
     dadoService
       .getOne(postId)
       .then((response) => {
-        setPost(response.data);
+        setComments(response.data);
       })
       .catch((error) => {
         console.error("Erro ao buscar post:", error);
@@ -76,12 +78,18 @@ function Coment() {
       setError('O comentário não pode estar vazio.');
       return;
     }
-
+    const dadoObject = {
+      comment: newComment,
+      user_id: user.id,
+      post_id: postId
+    };
+    console.log(dadoObject)
     // Envia o novo comentário para o backend
-    dadoService.createComment(postId, { comentario: newComment })
+    dadoService.createComment(dadoObject)
+    
       .then(() => {
         // Após criar o comentário, recarregue os comentários
-        // fetchPostAndComments();
+        fetchPostAndComments();
         // Limpar o campo de novo comentário após o envio
         setNewComment('');
         setError(null); // Limpar qualquer erro anterior
@@ -136,6 +144,7 @@ function Coment() {
           <button className="btn btn-primary mt-2" onClick={submitComment}>Enviar Comentário</button>
         </div>
       </div>
+      {comments}
       <Footer />
     </div>
 

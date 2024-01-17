@@ -65,12 +65,12 @@ function Home() {
                       <p className='card-text '>
                         <i className="bi bi-chat-dots"></i> {post.descricao}
                       </p>
-                      <Link
-                        className="btnAD" to={"/coment/"+post.id}
+                      <Button
+                        className="btnAD" onclick
                        
                       >
                         
-                      </Link>
+                      </Button>
                     </div>
                   </div>
                 </div>
