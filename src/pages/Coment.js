@@ -44,12 +44,12 @@ function Coment() {
       });
   };
 
-  const fetchData = () => {
-    dadoService
+  const fetchData = async () => {
+    await dadoService
       .getOne(postId)
       .then((response) => {
         setPost(response.data);
-
+        console.log(response.data)
       })
       .catch((error) => {
         if (error.response) {
@@ -118,20 +118,7 @@ function Coment() {
 
         {/* Exibe os comentários existentes */}
         <h3>Comentários:</h3>
-        {comments.map((comment) => (
-          <div key={comment.id} className="mb-3">
-            <p className="bg-light p-2">{comment.comentario}</p>
-            {/* Adicione outros campos conforme necessário */}
-          </div>
-        ))}
-
-        {/* Exibe o erro, se houver */}
-        {error && (
-          <div className="alert alert-danger" role="alert">
-            {error}
-          </div>
-        )}
-
+       
         {/* Formulário para adicionar novos comentários */}
         <div className="comment-form mt-3">
           <textarea

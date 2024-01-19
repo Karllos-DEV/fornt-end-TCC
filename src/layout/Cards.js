@@ -8,7 +8,6 @@ function Cards({ posts, handleDelete }) {
   const [taskIdToDelete, setTaskIdToDelete] = useState(null);
 
   const openConfirmation = (id) => {
-    console.log('Excluir post ID:', id);
     setTaskIdToDelete(id);
     setShowConfirmation(true);
   };
@@ -61,9 +60,9 @@ function Cards({ posts, handleDelete }) {
       ))}
 
       {showConfirmation && (
-        <div className='modal p-5'>
-          <div className='modal-content m-5 p-1'>
-            <h4>Realmente deseja excluir?</h4>
+        <div className='modal '>
+          <div className='modal-content'>
+            <h4 className='.text-danger'>Realmente deseja excluir?</h4>
             <button onClick={confirmDelete}>Sim</button>
             <button onClick={closeConfirmation}>Cancelar</button>
           </div>

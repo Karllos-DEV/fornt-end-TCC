@@ -9,7 +9,8 @@ function Home() {
   const [posts, setPosts] = useState([]);
   const [error, setError] = useState(null);
   const navigate = useNavigate(); // Adicione esta linha
-  const urlBase = 'http://localhost:3001/images/'; // Adicione esta linha
+  const urlBase = 'http://localhost:3001/images/';
+  
 
   useEffect(() => {
     fetchData(); // Carrega os dados iniciais
@@ -65,12 +66,12 @@ function Home() {
                       <p className='card-text '>
                         <i className="bi bi-chat-dots"></i> {post.descricao}
                       </p>
-                      <Button
-                        className="btnAD" onclick
+                      <Link
+                        className="btnAD" to={`/coment/${post.id}`}
                        
                       >
                         
-                      </Button>
+                      </Link>
                     </div>
                   </div>
                 </div>
