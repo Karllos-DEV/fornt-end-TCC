@@ -4,29 +4,36 @@ import axios from 'axios';
 import './Cards.css';
 
 function Cards({ posts, handleDelete }) {
-  const [showConfirmation, setShowConfirmation] = useState(false);
   const [taskIdToDelete, setTaskIdToDelete] = useState(null);
 
+
   const openConfirmation = (id) => {
-    setTaskIdToDelete(id);
-    setShowConfirmation(true);
-  };
+    setTaskIdToDelete(id)
+  } 
 
-  const closeConfirmation = () => {
-    setTaskIdToDelete(null);
-    setShowConfirmation(false);
-  };
-
-  const confirmDelete = async () => {
-  try {
+  
+  const confirmDelete = () => {
     if (taskIdToDelete !== null) {
-      await handleDelete(taskIdToDelete);
-      closeConfirmation();
+      handleDelete(taskIdToDelete)
+      setTaskIdToDelete(null) // Limpa o ID do item a ser deletado
     }
-  } catch (error) {
-    console.error('Erro ao excluir post:', error);
   }
-};
+
+  const cancelDelete = () => {
+    setTaskIdToDelete(null) // Limpa o ID do item a ser deletado
+  }
+
+
+//   const confirmDelete = async () => {
+//   try {
+//     if (taskIdToDelete !== null) {
+//       await handleDelete(taskIdToDelete);
+//       closeConfirmation();
+//     }
+//   } catch (error) {
+//     console.error('Erro ao excluir post:', error);
+//   }
+// };
 
   return (
     <div className='row'>
@@ -58,13 +65,19 @@ function Cards({ posts, handleDelete }) {
           </div>
         </div>
       ))}
-
-      {showConfirmation && (
-        <div className='modal '>
-          <div className='modal-content'>
-            <h4 className='.text-danger'>Realmente deseja excluir?</h4>
-            <button onClick={confirmDelete}>Sim</button>
-            <button onClick={closeConfirmation}>Cancelar</button>
+      {/* form exclusão */}
+{taskIdToDelete !== null && (
+        <div className='alert-overlay  formX'>
+          <div className='alert bg-light  rounded'>
+            <h4 className='mb-4'>Realmente deseja excluir?</h4>
+            <div className='button-group p-1 '>
+              <button className='btn btn-danger  m-3 ' onClick={confirmDelete}>
+                Sim
+              </button>
+              <button className='btn btn-secondary m-3' onClick={cancelDelete}>
+                Cancelar
+              </button>
+            </div>
           </div>
         </div>
       )}

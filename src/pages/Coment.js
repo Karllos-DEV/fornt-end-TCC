@@ -1,72 +1,32 @@
-import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
-import dadoService from '../services/phonebook';
-import './Coment.css'; // Importe um arquivo CSS separado para os estilos
-import Header from '../layout/Header';
-import Footer from '../layout/Footer';
+import { useEffect, useState } from 'react'
+import { useNavigate, useParams } from 'react-router-dom'
 import useAuth from "../hooks/useAuth";
 
-function Coment() {
+import dadoService from '../services/phonebook'
+import Input from '../layout/Input'
+import Header from '../layout/Header'
+import Footer from '../layout/Footer'
+import './Editar.css'
 
-  const { postId } = useParams();
-  const [post, setPost] = useState(null);
-  const [comments, setComments] = useState([]);
+function Editar() {
+  const { id } = useParams()
+  const [nome, setNome] = useState('')
   const [newComment, setNewComment] = useState('');
   const [error, setError] = useState(null);
+  const [descricao, setDescricao] = useState('')
+  const [foto, setFoto] = useState(null)
   const urlBase = 'http://localhost:3001/images/';
   const {user} = useAuth();
 
   useEffect(() => {
-    fetchData()
-    fetchPostAndComments(); // Carrega o post e os comentários iniciais
-  }, []);
+    dadoService.getOne(id).then((response) => {
+      setNome(response.data.nome)
+      setDescricao(response.data.descricao)
 
-  const fetchPostAndComments = () => {
-    dadoService
-      .getOne(postId)
-      .then((response) => {
-        setComments(response.data);
-      })
-      .catch((error) => {
-        console.error("Erro ao buscar post:", error);
-        setError("Erro ao buscar post.");
-      });
+      setFoto(response.data.foto)
+    })
+  }, [id, foto])
 
-    dadoService
-      .getCommentsByPostId(postId)
-      .then((response) => {
-        setComments(response.data);
-        setError(null); // Limpar o erro ao buscar os comentários com sucesso
-      })
-      .catch((error) => {
-        console.error("Erro ao buscar comentários:", error);
-        setError("Erro ao buscar comentários.");
-      });
-  };
-
-  const fetchData = async () => {
-    await dadoService
-      .getOne(postId)
-      .then((response) => {
-        setPost(response.data);
-        console.log(response.data)
-      })
-      .catch((error) => {
-        if (error.response) {
-          // O servidor respondeu com um status de erro
-          console.error("Erro na requisição:", error.response);
-        } else if (error.request) {
-          // A requisição foi feita, mas não houve resposta do servidor
-          console.error("Não foi possível se conectar ao servidor.");
-          setError(
-            "Não foi possível se conectar ao servidor. Verifique sua conexão de rede."
-          );
-        } else {
-          // Algo aconteceu na configuração da requisição que causou o erro
-          console.error("Erro na configuração da requisição:", error.message);
-        }
-      });
-  };
 
   const handleCommentChange = (event) => {
     setNewComment(event.target.value);
@@ -81,16 +41,13 @@ function Coment() {
     const dadoObject = {
       comment: newComment,
       user_id: user.id,
-      post_id: postId
+      post_id: id
     };
     console.log(dadoObject)
     // Envia o novo comentário para o backend
     dadoService.createComment(dadoObject)
     
       .then(() => {
-        // Após criar o comentário, recarregue os comentários
-        fetchPostAndComments();
-        // Limpar o campo de novo comentário após o envio
         setNewComment('');
         setError(null); // Limpar qualquer erro anterior
       })
@@ -100,27 +57,25 @@ function Coment() {
       });
   };
 
+ 
+
 
   return (
-    <div className=" mt-5 main">
+    <div>
       <Header />
-      <div className='p-5'>
-        {/* Exibe o post aqui */}
-        <div>
-          <h2 className="post-title ">{post?.nome}</h2>
-          <p className="post-description">{post?.descricao}</p>
+    <div className='container'>
+      <h2> Comentários </h2>
+      <hr />
+      {/* Exibe o post aqui */}
+      <div>
+          <h2 className="post-title ">{nome}</h2>
+          <p className="post-description">{descricao}</p>
           <img
-            src={urlBase + post?.foto}
+            src={urlBase + foto}
             className='card-img-top'
             alt='foto'
           />
-        </div>
-
-        {/* Exibe os comentários existentes */}
-        <h3>Comentários:</h3>
-       
-        {/* Formulário para adicionar novos comentários */}
-        <div className="comment-form mt-3">
+          <div className="comment-form mt-3">
           <textarea
             className="form-control"
             rows="4"
@@ -130,12 +85,15 @@ function Coment() {
           />
           <button className="btn btn-primary mt-2" onClick={submitComment}>Enviar Comentário</button>
         </div>
-      </div>
-      {comments}
-      <Footer />
-    </div>
 
-  );
+          
+        </div>
+        
+    </div>
+    
+    <Footer />
+    </div >
+  )
 }
 
-export default Coment;
+export default Editar

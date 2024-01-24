@@ -29,7 +29,7 @@ const RoutesApp = () => {
           <Route path="/sobre" element={<ContactPage />} />
           <Route path="/confirm" element={<MPubli />} />
           <Route path="/coment" element={<Coment />} />
-          <Route path="/coment/:postId" element={<Coment />} />
+          <Route path="/coment/:id" element={<Coment />} />
           <Route path="*" element={<Home />} />
         </Routes>
       </Fragment>
