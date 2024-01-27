@@ -8,9 +8,7 @@ const getAll = () => axios.get(urlBase);
 
 const getMyPosts = (id) => axios.get(`${urlBase}/myposts/${id}`)
 
-const getCommentsByPostId = (id) => axios.get(`${urlBase}/${id}`)
-
-
+const getCommentsByPostId = (id) => axios.get(`${urlComens}/${id}`) 
 
 const getOne = (id) => axios.get(`${urlBase}/${id}`);
 
@@ -27,9 +25,17 @@ const create = (dadoObject) =>
 
 const remove = (id) => axios.delete(`${urlBase}/${id}`);
 
-const update = (id, dadoObject) =>
-  axios.put(`${urlBase}/${id}`, dadoObject);
+const removeComs = (id) => axios.delete(`${urlComens}/${id}`);
 
-const dadoService = { getAll, getOne, create, remove, update, getMyPosts, createComment, getCommentsByPostId};
+const update = (id, dadoObject) => {
+const headers = {};
+if (dadoObject.foto) {
+  headers['Content-Type'] = 'multipart/form-data';
+}
+
+return axios.post(`${urlBase}/update/${id}`, dadoObject, { headers })
+};
+
+const dadoService = { getAll, getOne, create, remove, removeComs, update, getMyPosts, createComment, getCommentsByPostId};
 
 export default dadoService;

@@ -1,4 +1,16 @@
-.navT {
+.Login {
+    border-radius: 50px;
+    padding: 10px 38px;
+    background: #00d9ff;
+    color: #262626;
+    text-decoration: none;
+    text-align: center;
+    font-weight: bold;
+}
+/* .navH{
+    background-color: grey;
+} */
+/* .navT {
     display: flex;
     margin-right: 100px;
 }
@@ -34,13 +46,7 @@ nav {
     gap: 30px;
 }
 
-.Login {
-    border-radius: 50px;
-    padding: 10px 38px;
-    background: #00d9ff;
-    color: #262626;
-    text-decoration: none;
-}
+
 
 
 
@@ -109,4 +115,4 @@ nav {
 
 .tx:hover {
     color: #00d9ff;
-}
+} */

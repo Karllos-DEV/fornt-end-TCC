@@ -21,10 +21,9 @@ function Editar() {
       setNome(response.data.nome)
       setDescricao(response.data.descricao)
 
-      setFoto(response.data.foto)
-      setFotoAntiga('http://localhost:3001/images/' + foto)
+      setFotoAntiga('http://localhost:3001/images/' + response.data.foto)
     })
-  }, [id, foto])
+  }, [id, foto, navigate])
 
   const handleNomeChange = (event) => {
     // console.log(event.target.value);
@@ -55,9 +54,6 @@ function Editar() {
   const editObject = async (event) => {
     event.preventDefault()
 
-
-
-
     const dadoObject = {
       nome,
       descricao,
@@ -76,12 +72,12 @@ function Editar() {
   }
 
   return (
-    <div>
+    <div className='back'>
       <Header />
-    <div className='container'>
+    <div className='container editbg'>
       <h2>Editar Publicações</h2>
       <hr />
-      <form onSubmit={editObject} className='editbg'>
+      <form onSubmit={editObject}>
         <Input
           textLabel='nome'
           text='Nome'
@@ -110,13 +106,18 @@ function Editar() {
             onChange={handleFileChange}
           />
           {fotoPreview ? (
-            <img 
+            <img
+            className='prvw'
               src={fotoPreview}
               alt='Preview'
               style={{ maxWidth: '200px' }}
             />
           ) : fotoAntiga ? (
-            <img className='previmg' src={fotoAntiga} alt='Preview' style={{ maxWidth: '200px' }} />
+            <img 
+            className='previmg'
+             src={fotoAntiga} 
+             alt='Preview' 
+             style={{ maxWidth: '200px' }} />
           ) : null}
         </div>
         <button className='btn btn-primary m-2'>Editar</button>

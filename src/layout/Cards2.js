@@ -14,11 +14,11 @@ function Cards2({ posts, onPostClick }) {
   }
 
   return (
-    <div className='row'>
+    <div className='container'>
       {posts.map((post) => (
-        <div className='col-sm-4' key={post.id}>
+        <div className='col-md-6 my-2 col-lg-4' key={post.id}>
           <div className='card mb-3'>
-            <img src={urlBase + post.foto} className='card-img-top' alt='foto' />
+            <img src={urlBase + post.foto} className='card-img-top' alt='foto'  style={{objectFit: 'cover', height: '200px'}} />
             <div className='card-body'>
               <h5 className='card-title'>{post.nome}</h5>
               <p className='card-text'>

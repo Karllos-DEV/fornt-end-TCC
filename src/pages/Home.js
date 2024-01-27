@@ -44,7 +44,7 @@ function Home() {
   return (
     <div className="main">
       <Header />
-      <div className="container telaadd m-5 p-3">
+      <div className="container telaadd">
         <h2 className="mt-2"></h2>
         {error ? (
           <p className="alert alert-warning" role="alert">
