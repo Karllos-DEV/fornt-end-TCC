@@ -13,7 +13,7 @@ function Registro() {
 
   const navigate = useNavigate();
 
-  const urlBase = "http://localhost:3001/api/users/save";
+  const urlBase = "/api/users/save";
 
   const handleRegistro = async () => {
     try {

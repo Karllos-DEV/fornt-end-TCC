@@ -41,7 +41,7 @@ function Cards({ posts, handleDelete }) {
         <div className='col-sm-4' key={post.id}>
           <div className='card mb-3'>
             <img
-              src={`http://localhost:3001/images/${post.foto}`}
+              src={`/images/${post.foto}`}
               className='card-img-top'
               alt='foto'
               style={{objectFit: 'cover', height: '200px'}}

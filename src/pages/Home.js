@@ -9,7 +9,7 @@ function Home() {
   const [posts, setPosts] = useState([]);
   const [error, setError] = useState(null);
   const navigate = useNavigate(); // Adicione esta linha
-  const urlBase = 'http://localhost:3001/images/';
+  const urlBase = '/images/';
   
 
   useEffect(() => {
@@ -45,14 +45,13 @@ function Home() {
     <div className="main">
       <Header />
       <div className="container telaadd">
-        <h2 className="mt-2"></h2>
         {error ? (
           <p className="alert alert-warning" role="alert">
             {error}
           </p>
         ) : (
           <>
-            <div className="my-3 ">
+            <div className="row my-3">
               {posts.map((post) => (
                 <div className='col-sm-4 ' key={post.id}>
                   <div className='card mb-3'>

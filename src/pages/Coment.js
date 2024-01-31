@@ -15,7 +15,7 @@ function Coment() {
   const [descricao, setDescricao] = useState("");
   const [foto, setFoto] = useState(null);
   const { user } = useAuth();
-  const urlBase = "http://localhost:3001/images/";
+  const urlBase = "/images/";
   const [taskIdToDelete, setTaskIdToDelete] = useState(null);
 
   const fetchData = async () => {

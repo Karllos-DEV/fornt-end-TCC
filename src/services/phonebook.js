@@ -1,8 +1,8 @@
 import axios from "axios";
 
-const urlBase = "http://localhost:3001/api/dados";
+const urlBase = "/api/dados";
 
-const urlComens = "http://localhost:3001/api/comms"
+const urlComens = "/api/comms"
 
 const getAll = () => axios.get(urlBase);
 

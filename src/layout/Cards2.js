@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import './Cards.css';
 
 function Cards2({ posts, onPostClick }) {
-  const urlBase = 'http://localhost:3001/images/';
+  const urlBase = '/images/';
 
   if (posts.length === 0) {
     return (
@@ -14,9 +14,9 @@ function Cards2({ posts, onPostClick }) {
   }
 
   return (
-    <div className='container'>
+    <div className='row'>
       {posts.map((post) => (
-        <div className='col-md-6 my-2 col-lg-4' key={post.id}>
+        <div className='col-sm-4' key={post.id}>
           <div className='card mb-3'>
             <img src={urlBase + post.foto} className='card-img-top' alt='foto'  style={{objectFit: 'cover', height: '200px'}} />
             <div className='card-body'>

@@ -13,7 +13,7 @@ function Coment() {
   const [comments, setComments] = useState([]);
   const [newComment, setNewComment] = useState('');
   const [error, setError] = useState(null);
-  const urlBase = 'http://localhost:3001/images/';
+  const urlBase = '/images/';
   const {user} = useAuth();
 
   useEffect(() => {

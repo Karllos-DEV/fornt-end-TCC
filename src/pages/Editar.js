@@ -21,7 +21,7 @@ function Editar() {
       setNome(response.data.nome)
       setDescricao(response.data.descricao)
 
-      setFotoAntiga('http://localhost:3001/images/' + response.data.foto)
+      setFotoAntiga('/images/' + response.data.foto)
     })
   }, [id, foto, navigate])
 
